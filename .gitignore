@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# Allow Python and notebook file types
+!*.ipynb
+!*.py
+!*.html
+!*.md
+
+# Allow .gitignore file
+!*.gitignore
