@@ -19,9 +19,50 @@ We will focus on the NEON Soaproot Saddle Site (SOAP) in the Sierra National For
 
 <img src="img/capstone_workflow.png">
 
-### Instructions to Run the Code:
-The code for this project will be completed in Jupyter Notebooks in the Python language. To run the code, a way to open, use, and edit Jupyter Notebooks is required (such as Jupyter Notebooks itself or Visual Studio Code). Additionally, an environment and repository with specific packages and libraries will be ideal. To create said environment/repository, ensure mamba is installed and then use these commands:
+### Instructions to Set up the Python Environment:
+The code for this project will be completed in Jupyter Notebooks in the Python language. To run the code, a way to open, use, and edit Jupyter Notebooks is required (such as Jupyter Notebooks itself or Visual Studio Code). Additionally, an environment and repository with specific packages and libraries is needed. To create said environment/repository, ensure mamba is installed and then use these commands:
 
 * mamba create -n lpdaac_vitals -c conda-forge --yes python=3.10 fiona=1.8.22 gdal earthaccess h5py h5netcdf spectral scikit-image
 * mamba activate lpdaac_vitals
 * mamba install -c conda-forge --yes hvplot geoviews rioxarray rasterio geopandas jupyter jupyter_bokeh jupyterlab seaborn dask ray-default
+
+See https://github.com/nasa/VITALS/tree/main/setup for more information.
+
+### Repository Structure:
+
+```
+project-root/
+│
+├── notebooks/                # Main folder for notebooks
+│   ├── exploratory/          # Subfolder for exploratory analysis
+│   │   ├── hr/               # Subfolder for Hannah Rieder's notebooks
+│   │   │   ├── 01_hr_find_download_data.ipynb
+│   │   │   └── 02_hr_visualize_data.ipynb
+│   │   ├── rn/               # Subfolder for Randi Neff's notebooks
+│   │   │   ├── 01_rn_find_download_data.ipynb
+│   │   │   ├── 02_rn_explore_aop_data.ipynb
+│   │   │   └── 03_rn_explore_emit_data.ipynb
+│   │   ├── bh/               # Subfolder for Bridget Hass's notebooks
+│   │   │   ├── 01_bh_find_download_data.ipynb
+│   │
+│   ├── final/                # Subfolder for finalized notebooks
+│   │   ├── 01_find_and_download_collocated_data.ipynb
+│   │   ├── 02_aop_endmember_extraction.ipynb
+│
+├── scripts/                  # Python scripts for processing and analysis
+│   ├── preprocess.py
+│   └── analysis.py
+│
+├── data/                     # Data folder (ignored by Git)
+│   ├── raw/                  # Raw data (input files)
+│   ├── processed/            # Processed data (intermediate files)
+│   └── output/               # Final output files
+│
+├── results/                  # Results (e.g., plots, reports, etc.)
+│   ├── figures/
+│   └── summary.md
+│
+├── .gitignore                # Git ignore file
+├── README.md                 # Project overview and instructions
+└── requirements.txt          # Python dependencies
+```
