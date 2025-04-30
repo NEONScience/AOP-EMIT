@@ -66,3 +66,10 @@ project-root/
 ├── README.md                 # Project overview and instructions
 └── requirements.txt          # Python dependencies
 ```
+
+### Sources:
+
+1. DP3.30006.001 | Spectrometer orthorectified surface directional reflectance—Mosaic | NSF NEON | Open Data to Understand our Ecosystems. (n.d.). Retrieved April 28, 2025, from https://www.neonscience.org/taxonomy/term/6146
+2. Frequently Asked Questions (FAQ) | NSF NEON | Open Data to Understand our Ecosystems. (n.d.). Retrieved April 6, 2025, from https://www.neonscience.org/about/faq
+3. Green, R. (2023). EMIT L2B Estimated Mineral Identification and Band Depth and Uncertainty 60 m V001 [Dataset]. NASA Land Processes Distributed Active Archive Center. https://doi.org/10.5067/EMIT/EMITL2BMIN.001
+4. NASA Earthdata (Director). (2023, April 18). EMIT Data Tutorial Series Workshops Week 1: Intro to EMIT Mission and Data [Video recording]. https://www.youtube.com/watch?v=XzSEqdiS2aE
