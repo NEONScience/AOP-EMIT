@@ -20,7 +20,7 @@ We will focus on the NEON Soaproot Saddle Site (SOAP) in the Sierra National For
 <img src="img/capstone_workflow.png">
 
 ### Instructions to Set up the Python Environment:
-The code for this project will be completed in Jupyter Notebooks in the Python programming language. To run the code, a way to open, use, and edit Jupyter Notebooks is required (such as Jupyter Notebooks itself or Visual Studio Code). Additionally, an environment and repository with specific packages and libraries is needed. To create said Python environment (called `lpdaac_vitals`, ensure mamba is installed and then use these commands:
+The code for this project will be completed in Jupyter Notebooks in the Python programming language. To run the code, an Interactive Development Environment (IDE) is required to open, use, and edit Jupyter Notebook (.ipynb) files (we recommend Jupyter Notebooks, installed through [Anaconda](https://www.anaconda.com/) or alternatively [Visual Studio Code[(https://code.visualstudio.com/)). Additionally, an environment and repository with specific packages and libraries is needed. To create said Python environment (called `lpdaac_vitals` or another name of your choice), ensure mamba is installed and then use these commands:
 
 ```
 * mamba create -n lpdaac_vitals -c conda-forge --yes python=3.10 fiona=1.8.22 gdal earthaccess h5py h5netcdf spectral scikit-image
