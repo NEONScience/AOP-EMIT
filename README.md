@@ -20,13 +20,17 @@ We will focus on the NEON Soaproot Saddle Site (SOAP) in the Sierra National For
 <img src="img/capstone_workflow.png">
 
 ### Instructions to Set up the Python Environment:
-The code for this project will be completed in Jupyter Notebooks in the Python language. To run the code, a way to open, use, and edit Jupyter Notebooks is required (such as Jupyter Notebooks itself or Visual Studio Code). Additionally, an environment and repository with specific packages and libraries is needed. To create said environment/repository, ensure mamba is installed and then use these commands:
+The code for this project will be completed in Jupyter Notebooks in the Python programming language. To run the code, a way to open, use, and edit Jupyter Notebooks is required (such as Jupyter Notebooks itself or Visual Studio Code). Additionally, an environment and repository with specific packages and libraries is needed. To create said Python environment (called `lpdaac_vitals`, ensure mamba is installed and then use these commands:
 
+```
 * mamba create -n lpdaac_vitals -c conda-forge --yes python=3.10 fiona=1.8.22 gdal earthaccess h5py h5netcdf spectral scikit-image
 * mamba activate lpdaac_vitals
 * mamba install -c conda-forge --yes hvplot geoviews rioxarray rasterio geopandas jupyter jupyter_bokeh jupyterlab seaborn dask ray-default
+```
 
-See https://github.com/nasa/VITALS/tree/main/setup for more information.
+See https://github.com/nasa/VITALS/tree/main/setup for more information. 
+
+Notes: `conda-forge` installations can take a long time to complete, so we recommend splitting up the installations into two sets, as shown above. The packages can all be installed at once but it may take a prohibitively long time. Either way, we recommend allowing the installations to run over night.
 
 ### Repository Structure:
 
