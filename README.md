@@ -15,17 +15,26 @@ The Earth Surface Mineral Dust Source Investigation (EMIT) instrument is located
 The National Ecological Observatory Network consists of 81 field sites covering 20 ecoclimatic domains in 48 continental U.S. states, plus Alaska, Hawaii, and Puerto Rico. Each field site has various sensors and tools to measure biological, physical, chemical, and ecological characteristics. NEON also operates an Airborne Observation Platform (AOP), which is a set of instruments on a light aircraft that collect high resolution remote sensing data at a low altitude [NSF NEON](https://www.neonscience.org/about/faq). One of the datasets AOP collects is surface reflectance at 1 meter resolution (see [Spectrometer Orthorectified Surface Bidirectional Reflectance](https://data.neonscience.org/data-products/DP3.30006.002)).
 
 #### How will we answer our questions?
-We will focus on the NEON Soaproot Saddle Site (SOAP) in the Sierra National Forest in California. Specifically, we will look at two wildfires that happened at the SOAP site in 2020 and 2021 - the Creek and Blue fires. We will use Python to download, wrangle, and clip EMIT mineral distribution maps to the SOAP flight box boundaries and zoom in on a small area surrounding the fire perimeters. Similarly, we will download, wrangle, and clip NEON surface reflectance data to a small areas encompassing both burned and un-burned land. These NEON surface reflectance data will be classified using k-means or endmember extraction. Then, the EMIT mineral distribution maps will be compared to the classified NEON surface reflectance data. The EMIT maps and classified NEON data will also be used to compare surface mineral distribution and reflectance between burned and unburned areas. Here is the proposed project workflow:
+We will focus on the NEON Soaproot Saddle Site (SOAP) in the Sierra National Forest in California. Specifically, we will look at two wildfires that happened at the SOAP site in 2020 and 2021 - the Creek and Blue fires. We will use Python to download, wrangle, and clip EMIT mineral distribution maps to the SOAP flight box boundaries and zoom in on a small area (2 x 2 km or 5 x 5km) within the NEON flight box containing both burned and unburned pixels. Similarly, we will download, wrangle, and clip NEON surface reflectance data to the same small area encompassing both burned and un-burned areas. These NEON surface reflectance data will be classified using k-means or endmember extraction. Then, the EMIT mineral distribution maps will be compared to the classified NEON surface reflectance data. The EMIT maps and classified NEON data will also be used to compare surface mineral distribution and reflectance between burned and unburned areas. Here is the proposed project workflow:
 
 <img src="img/capstone_workflow.png">
+
+### Datasets:
+
+**[NEON](https://data.neonscience.org/data-products/explore):**
+- [Spectrometer orthorectified surface bidirectional reflectance - mosaic](https://data.neonscience.org/data-products/DP3.30006.002)
+
+**[EMIT](https://earth.jpl.nasa.gov/emit/data/data-products/):**
+- Level 2a	Surface reflectance derived by screening clouds and correction for atmospheric effects
+- Level 3	Gridded map of mineral composition aggregated from level 2b with uncertainties and quality flags
 
 ### Instructions to Set up the Python Environment:
 The code for this project will be completed in Jupyter Notebooks in the Python programming language. To run the code, an Interactive Development Environment (IDE) is required to open, use, and edit Jupyter Notebook (.ipynb) files (we recommend Jupyter Notebooks, installed through [Anaconda](https://www.anaconda.com/) or alternatively [Visual Studio Code[(https://code.visualstudio.com/)). Additionally, an environment and repository with specific packages and libraries is needed. To create said Python environment (called `lpdaac_vitals` or another name of your choice), ensure mamba is installed and then use these commands:
 
 ```
-* mamba create -n lpdaac_vitals -c conda-forge --yes python=3.10 fiona=1.8.22 gdal earthaccess h5py h5netcdf spectral scikit-image
-* mamba activate lpdaac_vitals
-* mamba install -c conda-forge --yes hvplot geoviews rioxarray rasterio geopandas jupyter jupyter_bokeh jupyterlab seaborn dask ray-default
+mamba create -n lpdaac_vitals -c conda-forge --yes python=3.10 fiona=1.8.22 gdal earthaccess h5py h5netcdf spectral scikit-image
+mamba activate lpdaac_vitals
+mamba install -c conda-forge --yes hvplot geoviews rioxarray rasterio geopandas jupyter jupyter_bokeh jupyterlab seaborn dask ray-default
 ```
 
 See https://github.com/nasa/VITALS/tree/main/setup for more information. 
