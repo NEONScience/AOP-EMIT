@@ -1,11 +1,25 @@
 # Ignore everything
 *
 
+# Allow directories (so Git can traverse into subfolders)
+!*/
+
+# Exclude .ipynb_checkpoints folders
+.ipynb_checkpoints/
+
+# Exclude __pycache__ folders
+__pycache__
+
 # Allow Python and notebook file types
 !*.ipynb
 !*.py
 !*.html
 !*.md
+
+# Allow image files
+!*.png
+!*.PNG
+!*.jpg
 
 # Allow .gitignore file
 !*.gitignore
