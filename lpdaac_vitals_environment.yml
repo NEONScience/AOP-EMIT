@@ -1,4 +1,4 @@
-name: lpdaac_vitals
+name: lpdaac_vitals_exported
 channels:
   - conda-forge
   - defaults
