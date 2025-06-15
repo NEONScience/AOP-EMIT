@@ -29,7 +29,29 @@ We will focus on the NEON Soaproot Saddle Site ([SOAP](https://www.neonscience.o
 | Fire Perimeter Boundary from [CalFire](https://www.arcgis.com/home/item.html?id=692135b4e6ff47c8adae066ff477f4f1#overview) | Fire perimeters for fires greater than 50 acres in California between 2019 and 2023 | resolution unknown | California Fire Perimeters last 5 years View—Overview. (n.d.). Retrieved May 2, 2025, from https://www.arcgis.com/home/item.html?id=692135b4e6ff47c8adae066ff477f4f1#overview|
 
 ### Instructions to Set up the Python Environment:
-The code for this project will be completed in Jupyter Notebooks in the Python programming language. To run the code, an Interactive Development Environment (IDE) is required to open, use, and edit Jupyter Notebook (.ipynb) files (we recommend Jupyter Notebooks, installed through [Anaconda](https://www.anaconda.com/) or alternatively [Visual Studio Code[(https://code.visualstudio.com/)). Additionally, an environment and repository with specific packages and libraries is needed. To create said Python environment (called `lpdaac_vitals` or another name of your choice), ensure mamba is installed and then use these commands:
+The code for this project will be completed in Jupyter Notebooks in the Python programming language. To run the code, an Interactive Development Environment (IDE) is required to open, use, and edit Jupyter Notebook (.ipynb) files (we recommend Jupyter Notebooks, installed through [Anaconda](https://www.anaconda.com/) or alternatively [Visual Studio Code](https://code.visualstudio.com/)). Additionally, an environment and repository with specific packages and libraries is needed. To create said Python environment (called `lpdaac_vitals` or another name of your choice), there are two options:
+
+1. Use lpdaac_vitals_environment.yml file (recommended): The lpdaac_vitals_environment.yml file was created by exporting the environment used to create the notebooks in this repository; it was created by following step 2 below. Ensure [mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) or [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) are installed, and then use these commands depending on whether you have conda or mamba installed:
+
+Mamba code:
+```
+mamba env create -n lpdaac_vitals -f lpdaac_vitals_environment.yml
+```
+
+```
+mamba activate lpdaac_vitals
+```
+
+Conda code:
+```
+conda env create -n lpdaac_vitals -f lpdaac_vitals_environment.yml
+```
+
+```
+conda activate lpdaac_vitals
+```
+
+2. Create lpdaac_vitals environment from scratch: Ensure [mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) is installed and then use these commands:
 
 ```
 mamba create -n lpdaac_vitals -c conda-forge --yes python=3.10 fiona=1.8.22 gdal earthaccess h5py h5netcdf spectral scikit-image
@@ -40,6 +62,8 @@ mamba install -c conda-forge --yes hvplot geoviews rioxarray rasterio geopandas 
 See https://github.com/nasa/VITALS/tree/main/setup for more information. 
 
 Notes: `conda-forge` installations can take a long time to complete, so we recommend splitting up the installations into two sets, as shown above. The packages can all be installed at once but it may take a prohibitively long time. Either way, we recommend allowing the installations to run over night.
+
+
 
 ### Repository Structure:
 
