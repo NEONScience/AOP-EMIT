@@ -28,6 +28,8 @@ We will focus on the NEON Soaproot Saddle Site ([SOAP](https://www.neonscience.o
 | NEON - Flight Boundary Dataset Shapefile | NEON AOP flight boundaries in shapefile polygons | (0-1 unitless, scaled by 10,000) | See the “Flight Boundaries” section on this site: https://www.neonscience.org/data-samples/data/spatial-data-maps 
 | Fire Perimeter Boundary from [CalFire](https://www.arcgis.com/home/item.html?id=692135b4e6ff47c8adae066ff477f4f1#overview) | Fire perimeters for fires greater than 50 acres in California between 2019 and 2023 | resolution unknown | California Fire Perimeters last 5 years View—Overview. (n.d.). Retrieved May 2, 2025, from https://www.arcgis.com/home/item.html?id=692135b4e6ff47c8adae066ff477f4f1#overview|
 
+*We do not have Data Releases ready yet, they will be added later. We anticipate having a data release for the NEON spectrometer data and a data release for the EMITL2A reflectance data. For each dataset, we anticipate having a data release of a clipped version of each dataset clipped to our NEON field site of interest.*
+
 ### Instructions to Set up the Python Environment:
 The code for this project will be completed in Jupyter Notebooks in the Python programming language. To run the code, an Interactive Development Environment (IDE) is required to open, use, and edit Jupyter Notebook (.ipynb) files (we recommend Jupyter Notebooks, installed through [Anaconda](https://www.anaconda.com/) or alternatively [Visual Studio Code](https://code.visualstudio.com/)). Additionally, an environment and repository with specific packages and libraries is needed. To create said Python environment (called `lpdaac_vitals` or another name of your choice), there are two options:
 
