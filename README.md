@@ -1,6 +1,6 @@
 [![DOI](https://zenodo.org/badge/968394746.svg)](https://doi.org/10.5281/zenodo.15300127)
 
-# AOP-EMIT
+# Comparing Canopy Water Content using NEON and EMIT Hyperspectral Data
 
 ## Project Description:
 This repository will be used for Randi Neff's & Hannah Rieder's capstone project to earn their Earth Data Analytics Professional Graduate Certificate from the University of Colorado Boulder. Bridget Hass from the National Ecological Observatory Network (NEON) will mentor this project.
