@@ -23,3 +23,6 @@ __pycache__
 
 # Allow .gitignore file
 !*.gitignore
+
+# Allow .yml files
+!*.yml
