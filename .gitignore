@@ -22,4 +22,4 @@ __pycache__
 !*.jpg
 
 # Allow .gitignore file
-!*.gitignore
+!*.gitignorenotebooks/exploratory/rn/02_rn_exploring_neon_emit_reflectance_data_soap.ipynb
