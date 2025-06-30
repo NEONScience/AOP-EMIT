@@ -82,3 +82,110 @@ print("\n--- Summary of Found Files ---")
 
 # Function 2 - hvplotter function
 
+def surfrfl_hvplot_image(ds,
+                         plottitle,
+                         cmap='viridis',
+                         clabel='Surface Reflectance (unitless)',
+                         geo=True,
+                         tiles='ESRI',
+                         crs='EPSG:4326',
+                         frame_width=720,
+                         frame_height=405,
+                         transparency=0.7,
+                         fontscale=2,
+                         xlabel='Longitude',
+                         ylabel='Latitude',
+                         #kwargs will be a dictionary inside our fxn
+                         #this would let a user bypass our fxn and add other .hvplot.image parameters
+                         **kwargs):
+    """
+    Create an interactive surface reflectance plot.
+    
+    Use hvplot.image() to create an interactive
+    plot of one band of surface reflectance provided
+    by an xarray.Dataset. The plot has ESRI
+    background tiles by default.
+    
+
+    Parameters
+    -----------
+    ds : xarray.Dataset
+        Dataset with one band of surface reflectance
+    cmap : str, default='viridis'
+        Colormap for continuous data
+    clabel : str, default='Surface Reflectance (unitless)'
+        Colorbar label
+    geo : bool, default=True
+        Whether the plot is treated as geographic
+    tiles : str, default='ESRI'
+        The background tiles the geographic data are overlaid on
+    crs : str or int EPSG code, default='EPSG:4326'
+        Coordinate reference system of the data
+    frame_width : int, default=720
+        Width of data area of plot
+    frame_height : int, default=405
+        Height of data area of plot
+    transparency : float, default=0.7
+        How transparent the plot of the data is
+    fontscale : float, default=2
+        Scale size of all fonts
+    plottitle : str
+        Title of the plot
+    xlabel : str, default='Longitude'
+        x-axis label
+    ylabel : str, default='Latitude'
+        y-axis label
+    **kwargs
+        Extra arguments to hvplot.image()
+
+
+    Returns
+    -------
+    plot : holoviews.core.overlay.Overlay
+        A geographpic surface reflectance plot
+        overlaid on basemap tiles.
+
+    Notes
+    -----
+    Some of the parameter descriptions are based on existing
+    descriptions in hvplot documentation[2]_. Further
+    information about hvplot.image() can be found on hvplot's
+    website[1]_.
+    
+    References
+    ----------
+    .. [1] Image—hvPlot 0.11.3 documentation. (n.d.).
+    Retrieved June 28, 2025, from https://hvplot.holoviz.org/reference/xarray/image.html
+    .. [2] Plotting Options—hvPlot 0.11.3 documentation. (n.d.).
+    Retrieved June 28, 2025, from https://hvplot.holoviz.org/ref/plotting_options/index.html
+    """
+    plot = (
+        ds
+        .hvplot
+        .image(
+            #color map
+            cmap=cmap,
+            #colorbar label
+            clabel=clabel,
+            #geographic data
+            geo=geo,
+            #background tiles
+            tiles=tiles,
+            #map CRS
+            crs=crs,
+            #plot width & height
+            frame_width=frame_width,
+            frame_height=frame_height,
+            #opacity of surface reflectance data layer
+            alpha=transparency,
+            #font scale
+            fontscale=fontscale,
+            #figure title
+            title=plottitle,
+            #figure x and y labels
+            xlabel=xlabel,
+            ylabel=ylabel,
+            #any desired kwargs
+            **kwargs))
+    return plot
+
