@@ -1,7 +1,11 @@
-# Randi's info abt why we made a fxn to explore multiple data
-# folders here :)
+# Function explanations
+# Function 1 - The data_tracker function was written as a helpful way 
+# to confirm the data files are downloaded in the correct place. 
+# We have three different data folders which makes looking through folders 
+# manually for specific files cumbersome - using the file extension 
+# search helps target specific files..
 
-# We chose to modularize the hvplot.image() function because
+# Function 2 - We chose to modularize the hvplot.image() function because
 # it is lengthy as it includes several parameters. Also, we
 # found that almost the exact same parameters (if not the exact
 # same) were being used for all plots. This function will make
@@ -9,14 +13,11 @@
 # we cropped datasets correctly. We can also use it to easily
 # see the surface reflectance for different wavelengths.
 
-
 # Another step we will take to modularize our workflow is to
 # create a for loop to calculate canopy water content (CWC).
 # We will create a for loop for this because we have 4 different
 # CWC calculations. A for loop will let us easily calculate CWC
 # for the two different tiles of interest and the two different datasets.
-
-
 
 # Function 1 - data tracker function
 # For two different data downloads: NEON data & EMIT data
