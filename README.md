@@ -29,7 +29,7 @@ Create an Earthdata Login account (if you don't already have one) at [https://ur
 
 *We do not have Data Releases ready yet, they will be added later. We anticipate having a data release for the NEON spectrometer data and a data release for the EMITL2A reflectance data. For each dataset, we anticipate having a data release of a clipped version of each dataset clipped to our NEON field site of interest.*
 
-### Instructions to Set up the Python Environment:
+## Instructions to Set up the Python Environment:
 The code for this project will be completed in Jupyter Notebooks in the Python programming language. To run the code, an Interactive Development Environment (IDE) is required to open, use, and edit Jupyter Notebook (.ipynb) files (we recommend Jupyter Notebooks, installed through [Anaconda](https://www.anaconda.com/) or alternatively [Visual Studio Code](https://code.visualstudio.com/)). Additionally, an environment and repository with specific packages and libraries is needed. To create said Python environment (called `lpdaac_vitals` or another name of your choice), there are two options:
 
 **Option 1:** Use lpdaac_vitals_environment.yml file (recommended): The lpdaac_vitals_environment.yml file was created by exporting the environment used to create the notebooks in this repository; this environment was created by following option 2 below. Option 1 may take about ten minutes to create the environment. Ensure [mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) or [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) are installed, and then use these commands depending on whether you have conda or mamba installed:
@@ -70,10 +70,71 @@ See https://github.com/nasa/VITALS/tree/main/setup for more information.
 
 Notes: `conda-forge` installations can take a long time to complete, so we recommend splitting up the installations into two sets, as shown above. The packages can all be installed at once but it may take a prohibitively long time. Either way, we recommend allowing the installations to run over night.
 
-### Workflow Instructions
-A working set of instructions for running the workflow is still under development. For now, start with finding co-located data notebooks. These are in the AOP-EMIT/notebooks/exploratory/ folders but will be moved to a AOP-EMIT/notebooks/final/ folder once complete. The exploratory folders allow each project member to work without concern for issues with multiple copies of files with the same name. 
+## Workflow Instructions
+* **The end goal of these steps:** We want canopy water content (CWC) calculations for the burned and unburned tiles of interest at the NEON Soaproot Saddle field site (SOAP). For each tile, we want CWC calculated with EMIT and NEON data. This will allow us to compare CWC between burned and unburned areas AND between lower resolution (EMIT) and higher resolution (NEON) data to develop a tutorial for others interested in these two data sources.
 
-### Repository Structure:
+### Steps:
+
+<ol>
+  <li>Identify and download data:</li>
+  <ol>
+    <li>NEON</li>
+    <ol>
+      <li>Identify burned and unburned tiles of interest from the NEON AOP data. Identify the latitude and longitude of those tiles.</li>
+      <li>Download the NEON Spectrometer orthorectified surface bidirectional reflectance data for the burned and unburned tiles.</li>
+    </ol>
+    <li>EMIT</li>
+    <ol>
+      <li>Identify EMIT L2A Estimated Surface Reflectance granule(s) that cover the burned and unburned tiles.</li>
+      <li>Download the EMIT L2A Estimated Surface Reflectance granule(s)</li>
+      <li>Clip/crop the downloaded EMIT L2A Estimated Surface Reflectance granule(s) to the burned and unburned tiles of interest. <em>NOTE: if more than one EMIT granule is needed to cover one of the tiles of interest, those EMIT granules would need to be merged together first.</em></li>
+    </ol>
+  </ol>
+  <li>Calculate canopy water content (CWC) for the following combinations:</li>
+  <table>
+  <tr>
+    <th>           </th>
+    <th>Burned Tile</th>
+    <th>Unburned Tile</th>
+  </tr>
+  <tr>
+    <td>NEON Reflectance Data</td>
+    <td style="text-align:center;">    X    </td>
+    <td style="text-align:center;">    X    </td>
+  </tr>
+  <tr>
+    <td>EMIT Reflectance Data</td>
+    <td style="text-align: center;"> X </td>
+    <td style="text-align:center;"> X </td>
+  </tr>
+</table>
+
+  <li>Compare the CWC calculations:</li>
+  <ol>
+    <li>CWC calculated by lower and higher resolution reflectance data:</li>
+    <ol>
+      <li>Burned tile CWC between NEON and EMIT reflectance data</li>
+      <li>Unburned tile CWC between NEON and EMIT reflectance data</li>
+    </ol>
+    <li>CWC between burned and unburned areas:</li>
+    <ol>
+      <li>Burned tile CWC calculated with NEON reflectance data and unburned tile CWC calculated with NEON reflectance data</li>
+      <li>Burned tile CWC calculated with EMIT reflectance data and unburned tile CWC calculated with EMIT reflectance data</li>
+    </ol>
+  </ol>
+  <li>Extensions if we have time:</li>
+  <ol>
+    <li>Look at different scales:</li>
+    <ol>
+      <li>How does the comparison between the two data sources change based on the area involved?</li>
+      <li>At what point are the comparisons too divergent to be useful? What area is too big for NEON or too small for EMIT?</li>
+    </ol>
+    <li>Temporal comparisons.</li>
+  </ol>
+  <li>Develop Tutorial.</li>
+</ol>
+      
+## Repository Structure:
 
 ```
 project-root/
@@ -112,7 +173,7 @@ project-root/
 └── requirements.txt          # Python dependencies
 ```
 
-### Sources:
+## Sources:
 
 1. Land Processes Distributed Active Archive Center (LP DAAC). Equivalent Water Thickness/Canopy Water Content from Imaging Spectroscopy Data https://nasa.github.io/VITALS/python/03_EMIT_CWC_from_Reflectance.html
 2. Green, R. (2022). EMIT L2A Estimated Surface Reflectance and Uncertainty and Masks 60 m V001 [Data set]. NASA EOSDIS Land Processes Distributed Active Archive Center. Accessed 2025-06-15 from https://doi.org/10.5067/EMIT/EMITL2ARFL.001
