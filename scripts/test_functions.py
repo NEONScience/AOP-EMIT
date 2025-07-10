@@ -63,7 +63,7 @@ def data_download_tracker(absolute_soap_path, folder_names, extension):
                     found_files_in_current_folder.append(full_path)
                     print(f"Found: {full_path}")
 
-     if found_files_in_current_folder:
+        if found_files_in_current_folder:
             print(f"Found {len(found_files_in_current_folder)} '{extension}' files in '{folder_name}'.")
         else:
             print(f"No '{extension}' files found in '{folder_name}'.")
