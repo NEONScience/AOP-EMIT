@@ -40,7 +40,7 @@ def data_download_tracker(absolute_soap_path, folder_names, extension):
     """
     all_found_files = {} # To store results for each folder
 
-if not os.path.isdir(absolute_soap_path):
+    if not os.path.isdir(absolute_soap_path):
         print(f"Error: The 'SOAP' directory does not exist at: {soap_directory}")
         return all_found_files
 
@@ -63,7 +63,7 @@ if not os.path.isdir(absolute_soap_path):
                     found_files_in_current_folder.append(full_path)
                     print(f"Found: {full_path}")
 
- if found_files_in_current_folder:
+     if found_files_in_current_folder:
             print(f"Found {len(found_files_in_current_folder)} '{extension}' files in '{folder_name}'.")
         else:
             print(f"No '{extension}' files found in '{folder_name}'.")
@@ -90,7 +90,7 @@ if __name__ == "__main__":
         file_extension_to_find
     )
 
-print("\n--- Summary of Found Files ---")
+    print("\n--- Summary of Found Files ---")
     for folder, files in found_nc_files_by_folder.items():
         if files:
             print(f"In '{folder}': {len(files)} '{file_extension_to_find}' files found.")
