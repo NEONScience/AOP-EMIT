@@ -49,7 +49,7 @@ def data_download_tracker(absolute_soap_path, folder_names, extension):
     for folder_name in folder_names:
         current_data_folder = os.path.join(absolute_soap_path, folder_name)
         if not os.path.isdir(current_data_folder):
-            print(f"Warning: Folder '{folder_name}' does not exist at: {current_data_folder}")
+            print(f"Warning: Folder '{folder_name}' doesn't exist at: {current_data_folder}")
             all_found_files[folder_name] = [] # Record an empty list for this folder
             continue
             
