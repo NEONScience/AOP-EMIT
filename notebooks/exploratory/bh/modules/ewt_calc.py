@@ -21,17 +21,17 @@ from osgeo import gdal
 from modules.emit_tools import emit_xarray, ortho_xr
 
 
-# Modified from
 def calc_ewt(
     filepath: str,
     outdir: str,
     n_cpu: int = (cpu_count() - 1),
     ewt_detection_limit: float = 0.5,
     return_cwc: bool = False,
+    is_emit: bool = True,
 ) -> None:
     """
     This function will calculate the equivalent water thickness (EWT) or canopy water content (CWC) from an EMIT .nc reflectance
-    file using `ray` for parallelization,orthorectify if necessary, and write a cloud-optimized geotiff output.
+    file using `ray` for parallelization, orthorectify if necessary, and write a cloud-optimized geotiff output.
     """
     # Get number of rows to break up in parallel
     emit_ds = xr.open_dataset(filepath, decode_coords="all")
@@ -56,9 +56,6 @@ def calc_ewt(
     wvl = np.float64(emit_ds["wavelengths"].data)
 
     # Initialize Ray Cluster
-    # init_rfl = np.nan_to_num(emit_ds.reflectance.data[0,0,:].copy(),nan=-9999)
-    # res_0, abs_co_w = invert_liquid_water(init_rfl, wvl, return_abs_co=True)
-
     ray.init(num_cpus=n_cpu)
 
     # Set up Line Breaks for parallel
@@ -91,27 +88,33 @@ def calc_ewt(
     for key in ["wavelengths", "fwhm", "good_wavelengths"]:
         del coords[key]
 
-    output_metadata = {}
-    keep = [
-        "flight_line",
-        "time_coverage_start",
-        "time_coverage_end",
-        "easternmost_longitude",
-        "northernmost_latitude",
-        "westernmost_longitude",
-        "southernmost_latitude",
-        "spatialResolution",
-        "spatial_ref",
-        "geotransform",
-        "day_night_flag",
-        "title",
-        "granule_id",
-    ]
-    for key in keep:
-        output_metadata[key] = emit_ds.attrs[key]
-    output_metadata[
-        "title"
-    ] = "EMIT Estimated Equivalent Water Thickness (EWT) / Canopy Water Content (CWC)"
+    if is_emit:
+        output_metadata = {}
+        keep = [
+            "flight_line",
+            "time_coverage_start",
+            "time_coverage_end",
+            "easternmost_longitude",
+            "northernmost_latitude",
+            "westernmost_longitude",
+            "southernmost_latitude",
+            "spatialResolution",
+            "spatial_ref",
+            "geotransform",
+            "day_night_flag",
+            "title",
+            "granule_id",
+        ]
+        for key in keep:
+            output_metadata[key] = emit_ds.attrs[key]
+        output_metadata[
+            "title"
+        ] = "EMIT Estimated Equivalent Water Thickness (EWT) / Canopy Water Content (CWC)"
+    else:
+        output_metadata = {}
+        output_metadata[
+            "title"
+        ] = "Estimated Equivalent Water Thickness (EWT) / Canopy Water Content (CWC)"
 
     # Create Data Vars - Squeeze bands dim
     data_vars = {"cwc": (list(emit_ds.dims.keys())[0:2], cwc.squeeze())}
@@ -124,14 +127,14 @@ def calc_ewt(
     }
 
     # Orthorectify if necessary
-    if ortho_cwc == False:
-        ds_cwc = ortho_xr(ds_cwc)
+    #if ortho_cwc == False:
+    #    ds_cwc = ortho_xr(ds_cwc)
 
     # Create output cog
-    ds_cwc.rio.to_raster(
-        raster_path=f"{outdir}{filepath.split('/')[-1].split('.')[0]}_cwc.tif",
-        driver="COG",
-    )
+#    ds_cwc.rio.to_raster(
+#        raster_path=f"{outdir}{filepath.split('/')[-1].split('.')[0]}_cwc.tif",
+#        driver="COG",
+#    )
 
     if return_cwc == True:
         return ds_cwc
