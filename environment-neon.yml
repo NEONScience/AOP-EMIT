@@ -17,6 +17,7 @@ dependencies:
   - jupyterlab
   - libgdal-hdf4
   - odc-stac
+  - pip
   - pyresample
   - pystac-client
   - python=3.12
