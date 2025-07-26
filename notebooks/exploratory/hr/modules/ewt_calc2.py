@@ -136,10 +136,10 @@ def calc_ewt(
         ds_cwc = ortho_xr(ds_cwc)
 
     # Create output cog
-#    ds_cwc.rio.to_raster(
-#        raster_path=f"{outdir}{filepath.split('/')[-1].split('.')[0]}_cwc.tif",
-#        driver="COG",
-#    )
+    ds_cwc.rio.to_raster(
+       raster_path=f"{outdir}{filepath.split('/')[-1].split('.')[0]}_cwc.tif",
+       driver="COG",
+    )
 
     if return_cwc == True:
         return ds_cwc
