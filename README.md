@@ -30,21 +30,19 @@ Create an Earthdata Login account (if you don't already have one) at [https://ur
 1. NEON burned and unburned tile boundary shapefiles - not just shapefiles, incl shx and dbf and prj and shp files as well. 
 2. no other data as part of this b/c it will be downloaded in tutorial. It's a reproducible workflow so data will be downloaded in the tutorial.
 
-## Instructions to Set up the Python Environment:
-The code for this project will be completed in Jupyter Notebooks in the Python programming language. To run the code, an Interactive Development Environment (IDE) is required to open, use, and edit Jupyter Notebook (.ipynb) files (we recommend Jupyter Notebooks, installed through [Anaconda](https://www.anaconda.com/) or alternatively [Visual Studio Code](https://code.visualstudio.com/)). Additionally, an environment and repository with specific packages and libraries is needed. To create said Python environment (called `lpdaac_vitals` or another name of your choice), there are two options:
+## Workflow Instructions:
 
-**Option 1:** Use lpdaac_vitals_environment.yml file (recommended): The lpdaac_vitals_environment.yml file was created by exporting the environment used to create the notebooks in this repository; this environment was created by following option 2 below. Option 1 may take about ten minutes to create the environment. Ensure [mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) or [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) are installed, and then use these commands depending on whether you have conda or mamba installed:
+### 1. Set up the Python Environment:
+The code for this project will be completed in Jupyter Notebooks in the Python programming language. To run the code, an Interactive Development Environment (IDE) is required to open, use, and edit Jupyter Notebook (.ipynb) files (we recommend Jupyter Notebooks, installed through [Anaconda](https://www.anaconda.com/) or alternatively [Visual Studio Code (VS Code)](https://code.visualstudio.com/)). Additionally, an environment and repository with specific packages and libraries is needed. To create said Python environment (called `lpdaac_vitals` or another name of your choice), there are two options depending on your operating system:
 
-Mamba code:
-```
-mamba env create -n lpdaac_vitals -f lpdaac_vitals_environment.yml
-```
+**Option 1 - Windows Operating System:** Create and activate the lpdaac_vitals_environment.yml file. The lpdaac_vitals_environment.yml file was created by exporting the environment used to create the exploratory notebooks in this repository; this environment was created by following option 2 below. Here are the full steps for this option:
 
-```
-mamba activate lpdaac_vitals
-```
+1. If not already installed, install [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) on your local computer.
+2. Download the lpdaac_vitals_environment.yml file to your computer and save it in the desired folder for this project (we'll refer to this as the project-root folder).
+3. In the project-root folder, create a new folder called "notebooks" (project-root/notebooks/). In this GitHub repo, navigate to the notebooks/final/ folder and download the 01_tutorial_notebook.ipynb and 02_tutorial_notebook.ipynb files and save them to the project-root/notebooks/ folder on your computer.
+4. Open the Command Prompt and use the `cd` command to change directories to the project-root folder.
+5. In the Command Prompt, run the following code. Creating the environment may take about 10 minutes.
 
-Conda code:
 ```
 conda env create -n lpdaac_vitals -f lpdaac_vitals_environment.yml
 ```
@@ -53,25 +51,34 @@ conda env create -n lpdaac_vitals -f lpdaac_vitals_environment.yml
 conda activate lpdaac_vitals
 ```
 
-**Option 2:** Create lpdaac_vitals environment from scratch: Ensure [mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) is installed and then use these commands:
+**Option 2 - Non-Windows Operating System:** Create lpdaac_vitals environment from scratch:
+1. If not already installed, install [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) on your local computer.
+2. In your file explorer, create a folder to be the project directory for this project (we'll refer to this as the project-root folder).
+3. In the project-root folder, create a new folder called "notebooks" (project-root/notebooks/). In this GitHub repo, navigate to the notebooks/final/ folder and download the 01_tutorial_notebook.ipynb and 02_tutorial_notebook.ipynb files and save them to the project-root/notebooks/ folder on your computer.
+4. Open your preferred command line interface and change directories to the project-root folder.
+5. In the command line interface, run the following code. `conda-forge` installations can take a long time to complete, so we recommend splitting up the installations into two sets, as shown below. The packages can all be installed at once but it may take a prohibitively long time. Either way, we recommend allowing the installations to run over night. See [https://github.com/nasa/VITALS/tree/main/setup](https://github.com/nasa/VITALS/tree/main/setup) for more information. 
 
 ```
-mamba create -n lpdaac_vitals -c conda-forge --yes python=3.10 fiona=1.8.22 gdal earthaccess h5py h5netcdf spectral scikit-image
+conda create -n lpdaac_vitals -c conda-forge --yes python=3.10 fiona=1.8.22 gdal earthaccess h5py h5netcdf spectral scikit-image
 ```
 
 ```
-mamba activate lpdaac_vitals
+conda activate lpdaac_vitals
 ```
 
 ```
-mamba install -c conda-forge --yes hvplot geoviews rioxarray rasterio geopandas jupyter jupyter_bokeh jupyterlab seaborn dask ray-default
+conda install -c conda-forge --yes hvplot geoviews rioxarray rasterio geopandas jupyter jupyter_bokeh jupyterlab seaborn dask ray-default
 ```
 
-See https://github.com/nasa/VITALS/tree/main/setup for more information. 
+### 2. Run the Tutorial Notebooks:
 
-Notes: `conda-forge` installations can take a long time to complete, so we recommend splitting up the installations into two sets, as shown above. The packages can all be installed at once but it may take a prohibitively long time. Either way, we recommend allowing the installations to run over night.
+If you'd like to complete the notebooks in VS Code, open the 01_tutorial_notebook.ipynb notebook in VS Code and complete it. Then open the 02_tutorial_notebook.ipynb in VS Code and complete it.
 
-## Workflow Instructions
+If you'd like to complete the notebooks in Jupyter Lab or Jupyter Notebooks, run the command `jupyter lab` or `jupyter notebook` in the command line interface once you have the environment activated. In a few seconds, Jupyter Lab or Jupyter Notebooks will open the project-root directory in your web browser. Now, you can open and complete 01_tutorial_notebook.ipynb and then open and complete 02_tutorial_notebook.ipynb.
+
+Instructions for how to download, save, and access the data for these tutorial notebooks are in the tutorial notebooks. The tutorial notebooks also contain further instructions to set up your project-root folder for success.
+
+## ORIGINAL Workflow Instructions - should we take this out??
 * **The end goal of these steps:** We want canopy water content (CWC) calculations for the burned and unburned tiles of interest at the NEON Soaproot Saddle field site (SOAP). For each tile, we want CWC calculated with EMIT and NEON data. This will allow us to compare CWC between burned and unburned areas AND between lower resolution (EMIT) and higher resolution (NEON) data to develop a tutorial for others interested in these two data sources.
 
 ### Steps:
