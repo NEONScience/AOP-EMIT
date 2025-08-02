@@ -5,7 +5,7 @@
 ## Project Description:
 In this repository, Canopy Water Content (CWC)<sup>1</sup> is calculated with two different data products: Earth Surface Mineral Dust Source Investigation [[EMIT]](https://earth.jpl.nasa.gov/emit/data/data-products/)<sup>2</sup> L2A Surface Reflectance data and Spectrometer Orthorectified Surface Bidirectional Reflectance data from the NSF National Ecological Observatory Network (NEON) program<sup>3</sup>. This repository also evaluates trade-offs between higher resolution data [[NEON]](https://www.neonscience.org/about/faq) vs larger spatial scale data [EMIT].
 
-This repository contains a folder of exploratory notebooks that were completed by Randi Neff (rn), Hannah Rieder (hr), and Bridget Hass (bh) to learn about NEON and EMIT data and CWC. This repository also contains a folder of final notebooks that includes two tutorial notebooks born out of the exploratory notebooks. Others can use these tutorial notebooks to download and process NEON and EMIT reflectance data (01_NEON_EMIT_Download_Data.ipynb) and then calculate and compare CWC using the NEON and EMIT reflectance data (02_NEON_EMIT_CWC.ipynb). More information about **<a href="#workflow-instructions">Workflow Instructions</a>**, **Tutorial Notebook Contents**, and **Repository Structure** can be found below.
+This repository contains a folder of exploratory notebooks that were completed by Randi Neff (rn), Hannah Rieder (hr), and Bridget Hass (bh) to learn about NEON and EMIT data and CWC. This repository also contains a folder of final notebooks that includes two tutorial notebooks born out of the exploratory notebooks. Others can use these tutorial notebooks to download and process NEON and EMIT reflectance data (01_NEON_EMIT_Download_Data.ipynb) and then calculate and compare CWC using the NEON and EMIT reflectance data (02_NEON_EMIT_CWC.ipynb). More information about **<a href="#workflow-instructions">Workflow Instructions</a>**, **<a href="#tutorial-notebook-contents">Tutorial Notebook Contents</a>**, and **<a href="#repository-structure">Repository Structure</a>** can be found below.
 
 #### Background:
 EMIT measures surface reflectance from the International Space Station (ISS) at 60 meter resolution [(Green, 2023)](https://lpdaac.usgs.gov/products/emitl2bminv001/). NEON operates an Airborne Observation Platform (AOP), which is a set of instruments on a light aircraft that collect high resolution remote sensing data at a low altitude [(see NEON Airborne Remote Sensing webpage)](https://www.neonscience.org/data-collection/airborne-remote-sensing). One of the datasets AOP collects is surface reflectance at 1 meter resolution. 
@@ -80,7 +80,7 @@ If you'd like to complete the notebooks in Jupyter Lab or Jupyter Notebooks, run
 
 Instructions for how to download, save, and access the data for these tutorial notebooks are in the tutorial notebooks. The tutorial notebooks also contain further instructions to set up your project-root folder for success.
 
-### 2a. Tutorial Notebook Contents:
+### 2a. <span id="tutorial-notebook-contents">Tutorial Notebook Contents</span>:
 * **The end goal of both tutorial notebooks:** We want canopy water content (CWC) calculations for the burned and unburned tiles of interest at the NEON Soaproot Saddle field site (SOAP). For each tile, we want CWC calculated with EMIT and NEON data. This will allow us to compare CWC between burned and unburned areas AND between lower resolution (EMIT) and higher resolution (NEON) data.
 
 <ol>
@@ -143,7 +143,7 @@ Instructions for how to download, save, and access the data for these tutorial n
   <li>Develop Tutorial.</li>
 </ol>
       
-## Repository Structure:
+## <span id="repository-structure">Repository Structure</span>:
 
 ```
 project-root/
