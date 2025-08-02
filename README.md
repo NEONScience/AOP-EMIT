@@ -5,12 +5,12 @@
 ## Project Description:
 In this repository, Canopy Water Content (CWC)<sup>1</sup> is calculated with two different data products: Earth Surface Mineral Dust Source Investigation [[EMIT]](https://earth.jpl.nasa.gov/emit/data/data-products/)<sup>2</sup> L2A Surface Reflectance data and Spectrometer Orthorectified Surface Bidirectional Reflectance data from the NSF National Ecological Observatory Network (NEON) program<sup>3</sup>. This repository also evaluates trade-offs between higher resolution data [[NEON]](https://www.neonscience.org/about/faq) vs larger spatial scale data [EMIT].
 
-This repository contains a folder of exploratory notebooks that were completed by Randi Neff (rn), Hannah Rieder (hr), and Bridget Hass (bh) to learn about NEON and EMIT data and CWC. This repository also contains a folder of final notebooks that includes two tutorial notebooks born out of the exploratory notebooks. Others can use these tutorial notebooks to download and process NEON and EMIT reflectance data (01_NEON_EMIT_Download_Data.ipynb) and then calculate and compare CWC using the NEON and EMIT reflectance data (02_NEON_EMIT_CWC.ipynb). More information about **<a href="#workflow-instructions">Workflow Instructions</a>**, **<a href="#tutorial-notebook-contents">Tutorial Notebook Contents</a>**, and **<a href="#repository-structure">Repository Structure</a>** can be found below.
+This repository contains a folder of exploratory notebooks that were completed by Randi Neff (rn), Hannah Rieder (hr), and Bridget Hass (bh) to learn about NEON and EMIT data and CWC. This repository also contains a folder of final notebooks that includes two tutorial notebooks born out of the exploratory notebooks. Others can use these tutorial notebooks to download and process NEON and EMIT reflectance data (01_NEON_EMIT_Download_Data.ipynb) and then calculate and compare CWC using the NEON and EMIT reflectance data (02_NEON_EMIT_CWC.ipynb). A tutorial does not currently exist that compares NEON and EMIT reflectance data via CWC. More information about **<a href="#workflow-instructions">Workflow Instructions</a>**, **<a href="#tutorial-notebook-contents">Tutorial Notebook Contents</a>**, and **<a href="#repository-structure">Repository Structure</a>** can be found below.
 
 #### Background:
 EMIT measures surface reflectance from the International Space Station (ISS) at 60 meter resolution [(Green, 2023)](https://lpdaac.usgs.gov/products/emitl2bminv001/). NEON operates an Airborne Observation Platform (AOP), which is a set of instruments on a light aircraft that collect high resolution remote sensing data at a low altitude [(see NEON Airborne Remote Sensing webpage)](https://www.neonscience.org/data-collection/airborne-remote-sensing). One of the datasets AOP collects is surface reflectance at 1 meter resolution. 
 
-The area of interest is the NEON Soaproot Saddle Site [(SOAP)](https://www.neonscience.org/field-sites/soap) in the Sierra National Forest in California which contains a mixed conifer forest and was partially burned by the [Creek fire](https://www.fire.ca.gov/incidents/2020/9/4/creek-fire) in 2020. Within the SOAP site, two 1 km by 1 km tiles are focused on: one that was burned by the Creek fire and one that was unburned. Areas that burned and those that remained unburned will potentially show the impact of mortality using high resolution NEON data, which is crucial for understanding post-fire recovery, carbon dynamics and forest hydrology. Canopy Water Content [CWC] is an indicator of tree health and measures the total amount of liquid water in canopy leaves. <sup>5</sup> Measurements of CWC vary based on tree species and can be used to predict mortality. <sup>6</sup> In addition, using EMIT data at a larger scale can show broad patterns of vegetation stress. Ultimately, we will be using the work in this repository to create a tutorial for combining both datasets for a more robust analysis of surface reflectance and forest health.
+The area of interest is the NEON Soaproot Saddle Site [(SOAP)](https://www.neonscience.org/field-sites/soap) in the Sierra National Forest in California which contains a mixed conifer forest and was partially burned by the [Creek fire](https://www.fire.ca.gov/incidents/2020/9/4/creek-fire) in 2020. Within the SOAP site, two 1 km by 1 km tiles are focused on: one that was burned by the Creek fire and one that was unburned. Areas that burned and those that remained unburned will potentially show the impact of mortality using high resolution NEON data, which is crucial for understanding post-fire recovery, carbon dynamics and forest hydrology. Canopy Water Content (CWC) is an indicator of tree health and measures the total amount of liquid water in canopy leaves. <sup>5</sup> Measurements of CWC vary based on tree species and can be used to predict mortality. <sup>6</sup> In addition, using EMIT data at a larger scale can show broad patterns of vegetation stress. Ultimately, we will be using the work in this repository to create a tutorial for combining both datasets for a more robust analysis of surface reflectance and forest health.
 
 ## Datasets and Requirements:
 The following are required. All software or accounts are free. Data can be downloaded via scripts.
@@ -25,7 +25,8 @@ Create an Earthdata Login account (if you don't already have one) at [https://ur
 |---------------|-------------------|-----------------------------|---------------|
 | [EMIT L2A Estimated Surface Reflectance and Uncertainty and Masks (EMITL2ARFL)](https://lpdaac.usgs.gov/products/emitl2arflv001/)    | Non-orthorectified surface reflectance derived by screening clouds and correction for atmospheric effects; data is in NetCDF4 files; data can be searched for and downloaded via the earthaccess python library         | August 09, 2022 - ongoing, 60 m spatial resolution, each granule is abt 75 km by 75 km, areas are sunlit regions of interest between 52° N latitude and 52° S latitude            | Green, R. (2022). <i>EMIT L2A Estimated Surface Reflectance and Uncertainty and Masks 60 m V001</i> [Data set]. NASA EOSDIS Land Processes Distributed Active Archive Center. Accessed 2025-06-15 from https://doi.org/10.5067/EMIT/EMITL2ARFL.001                     |
 | [NEON - Spectrometer orthorectified surface bidirectional reflectance - mosaic](https://data.neonscience.org/data-products/DP3.30006.002)    | Hyperspectral raster distributed in an open HDF5 format in UTM projection; data can be downloaded via the neonutilities python package<sup>4</sup>         | April 2022 - ongoing; 1 m spatial resolution; each file contains all 426 reflectance bands for a single 1 km by 1 km tile       | NEON (National Ecological Observatory Network). Spectrometer orthorectified surface bidirectional reflectance - mosaic (DP3.30006.002), provisional data. Dataset accessed from https://data.neonscience.org/data-products/DP3.30006.002 on June 16, 2025. |
-| NEON - Flight Boundary Dataset Shapefile | NEON AOP flight boundaries in shapefile polygons; these shapefiles can be downloaded manually to the computer or possibly using ArcGIS; these SOAP site flight boundaries will provide the geometries that EMIT data is clipped to | (0-1 unitless, scaled by 10,000) | See the “Flight Boundaries” section on this site: https://www.neonscience.org/data-samples/data/spatial-data-maps 
+| NEON - Flight Boundary Dataset Shapefile | NEON AOP flight boundaries in shapefile polygons; these shapefiles can be downloaded manually to the computer or possibly using ArcGIS; these SOAP site flight boundaries will provide the geometries that EMIT data is clipped to | (0-1 unitless, scaled by 10,000) | See the “Flight Boundaries” section on this site: https://www.neonscience.org/data-samples/data/spatial-data-maps |
+| NEON - Burned & Unburned Tile Boundary Shapefiles (add official name) | Add tile boundary shapefiles short description | Add tile boundary shapefiles range, resolution, and area | Add tile boundary shapefiles citation |
 | Fire Perimeter Boundary from [CalFire](https://www.arcgis.com/home/item.html?id=692135b4e6ff47c8adae066ff477f4f1#overview) | Fire perimeters for fires greater than 50 acres in California between 2019 and 2023; these data will help determine which parts of SOAP site were burned and unburned for CWC comparison | resolution unknown | California Fire Perimeters last 5 years View—Overview. (n.d.). Retrieved May 2, 2025, from https://www.arcgis.com/home/item.html?id=692135b4e6ff47c8adae066ff477f4f1#overview|
 
 ## Data Release:
@@ -78,7 +79,10 @@ If you'd like to complete the notebooks in VS Code, open the 01_NEON_EMIT_Downlo
 
 If you'd like to complete the notebooks in Jupyter Lab or Jupyter Notebooks, run the command `jupyter lab` or `jupyter notebook` in the command line interface once you have the environment activated. In a few seconds, Jupyter Lab or Jupyter Notebooks will open the project-root directory in your web browser. Now, you can open and complete 01_NEON_EMIT_Download_Data.ipynb and then open and complete 02_NEON_EMIT_CWC.ipynb.
 
-Instructions for how to download, save, and access the data for these tutorial notebooks are in the tutorial notebooks. The tutorial notebooks also contain further instructions to set up your project-root folder for success.
+Please note that the tutorial notebooks include further information:
+* Instructions for how to download, save, and access the data for these tutorial notebooks
+* Instructions for how to set up your project-root folder for success
+* Descriptions about the .py files in the notebooks/final/modules folder in this GitHub repo and instructions for how to download and use the .py files
 
 ### 2a. <span id="tutorial-notebook-contents">Tutorial Notebook Contents</span>:
 * **The end goal of both tutorial notebooks:** We want canopy water content (CWC) calculations for the burned and unburned tiles of interest at the NEON Soaproot Saddle field site (SOAP). For each tile, we want CWC calculated with EMIT and NEON data. This will allow us to compare CWC between burned and unburned areas AND between lower resolution (EMIT) and higher resolution (NEON) data.
@@ -131,7 +135,7 @@ Instructions for how to download, save, and access the data for these tutorial n
       <li>Burned tile CWC calculated with EMIT reflectance data and unburned tile CWC calculated with EMIT reflectance data</li>
     </ol>
   </ol>
-  <li>Extensions if we have time:</li>
+  <li>Possible extensions:</li>
   <ol>
     <li>Look at different scales:</li>
     <ol>
@@ -140,7 +144,6 @@ Instructions for how to download, save, and access the data for these tutorial n
     </ol>
     <li>Temporal comparisons.</li>
   </ol>
-  <li>Develop Tutorial.</li>
 </ol>
       
 ## <span id="repository-structure">Repository Structure</span>:
@@ -161,8 +164,15 @@ project-root/
 │   │   │   ├── 01_bh_find_download_data.ipynb
 │   │
 │   ├── final/                # Subfolder for finalized notebooks
-│   │   ├── 01_find_and_download_collocated_data.ipynb
-│   │   ├── 02_aop_endmember_extraction.ipynb
+│   │   ├── modules
+│   │   │   ├── .ipynb_checkpoints
+│   │   │   ├── __pycache__
+│   │   │   ├── __init__
+│   │   │   ├── ewt_tools.py
+│   │   │   ├── ewt_calc2.py
+│   |   |   └── test_functions.py
+│   │   ├── 01_NEON_EMIT_Download_Data.ipynb
+│   │   └── 02_NEON_EMIT_CWC.ipynb
 │
 ├── scripts/                  # Python scripts for processing and analysis
 │   ├── preprocess.py
@@ -191,6 +201,6 @@ project-root/
 5. Asner, G. P., Brodrick, P. G., Anderson, C. B., Vaughn, N., Knapp, D. E., & Martin, R. E. (2015). Progressive forest canopy water loss during the 2012–2015 California drought. PNAS, 113(2). https://doi.org/https://doi.org/10.1073/pnas.152339711
 6. Brodrick, P., & Asner, G. (2017). Remotely sensed predictors of conifer tree mortalityduring severe drought. Environmental Research Letters, 12. DOI: 10.1088/1748-9326/aa8f55
 
-*The list of sources above includes some software citations, such as the neonutilities package. We will add more software, packages, and libraries to the sources list as we complete our work this summer.*
+*The list of sources above includes some software citations, such as the neonutilities package, as well as references for CWC, NEON, and EMIT information.*
 
 
