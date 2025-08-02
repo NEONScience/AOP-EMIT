@@ -5,6 +5,8 @@
 ## Project Description:
 In this repository, Canopy Water Content (CWC)<sup>1</sup> is calculated with two different data products: Earth Surface Mineral Dust Source Investigation [[EMIT]](https://earth.jpl.nasa.gov/emit/data/data-products/)<sup>2</sup> L2A Surface Reflectance data and Spectrometer Orthorectified Surface Bidirectional Reflectance data from the NSF National Ecological Observatory Network (NEON) program<sup>3</sup>. This repository also evaluates trade-offs between higher resolution data [[NEON]](https://www.neonscience.org/about/faq) vs larger spatial scale data [EMIT].
 
+This repository contains a folder of exploratory notebooks that were completed by Randi Neff (rn), Hannah Rieder (hr), and Bridget Hass (bh) to learn about NEON and EMIT data and CWC. This repository also contains a folder of final notebooks that includes two tutorial notebooks born out of the exploratory notebooks. Others can use these tutorial notebooks to download and process NEON and EMIT reflectance data (01_NEON_EMIT_Download_Data.ipynb) and then calculate and compare CWC using the NEON and EMIT reflectance data (02_NEON_EMIT_CWC.ipynb). More information about **<a href="#workflow-instructions">Workflow Instructions</a>**, **Tutorial Notebook Contents**, and **Repository Structure** can be found below.
+
 #### Background:
 EMIT measures surface reflectance from the International Space Station (ISS) at 60 meter resolution [(Green, 2023)](https://lpdaac.usgs.gov/products/emitl2bminv001/). NEON operates an Airborne Observation Platform (AOP), which is a set of instruments on a light aircraft that collect high resolution remote sensing data at a low altitude [(see NEON Airborne Remote Sensing webpage)](https://www.neonscience.org/data-collection/airborne-remote-sensing). One of the datasets AOP collects is surface reflectance at 1 meter resolution. 
 
@@ -30,7 +32,7 @@ Create an Earthdata Login account (if you don't already have one) at [https://ur
 1. NEON burned and unburned tile boundary shapefiles - not just shapefiles, incl shx and dbf and prj and shp files as well. 
 2. no other data as part of this b/c it will be downloaded in tutorial. It's a reproducible workflow so data will be downloaded in the tutorial.
 
-## Workflow Instructions:
+## <span id="workflow-instructions">Workflow Instructions</span>:
 
 ### 1. Set up the Python Environment:
 The code for this project will be completed in Jupyter Notebooks in the Python programming language. To run the code, an Interactive Development Environment (IDE) is required to open, use, and edit Jupyter Notebook (.ipynb) files (we recommend Jupyter Notebooks, installed through [Anaconda](https://www.anaconda.com/) or alternatively [Visual Studio Code (VS Code)](https://code.visualstudio.com/)). Additionally, an environment and repository with specific packages and libraries is needed. To create said Python environment (called `lpdaac_vitals` or another name of your choice), there are two options depending on your operating system:
@@ -39,7 +41,7 @@ The code for this project will be completed in Jupyter Notebooks in the Python p
 
 1. If not already installed, install [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) on your local computer.
 2. Download the lpdaac_vitals_environment.yml file to your computer and save it in the desired folder for this project (we'll refer to this as the project-root folder).
-3. In the project-root folder, create a new folder called "notebooks" (project-root/notebooks/). In this GitHub repo, navigate to the notebooks/final/ folder and download the 01_tutorial_notebook.ipynb and 02_tutorial_notebook.ipynb files and save them to the project-root/notebooks/ folder on your computer.
+3. In the project-root folder, create a new folder called "notebooks" (project-root/notebooks/). In this GitHub repo, navigate to the notebooks/final/ folder and download the 01_NEON_EMIT_Download_Data.ipynb and 02_NEON_EMIT_CWC.ipynb files and save them to the project-root/notebooks/ folder on your computer.
 4. Open the Command Prompt and use the `cd` command to change directories to the project-root folder.
 5. In the Command Prompt, run the following code. Creating the environment may take about 10 minutes.
 
@@ -54,7 +56,7 @@ conda activate lpdaac_vitals
 **Option 2 - Non-Windows Operating System:** Create lpdaac_vitals environment from scratch:
 1. If not already installed, install [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) on your local computer.
 2. In your file explorer, create a folder to be the project directory for this project (we'll refer to this as the project-root folder).
-3. In the project-root folder, create a new folder called "notebooks" (project-root/notebooks/). In this GitHub repo, navigate to the notebooks/final/ folder and download the 01_tutorial_notebook.ipynb and 02_tutorial_notebook.ipynb files and save them to the project-root/notebooks/ folder on your computer.
+3. In the project-root folder, create a new folder called "notebooks" (project-root/notebooks/). In this GitHub repo, navigate to the notebooks/final/ folder and download the 01_NEON_EMIT_Download_Data.ipynb and 02_NEON_EMIT_CWC.ipynb files and save them to the project-root/notebooks/ folder on your computer.
 4. Open your preferred command line interface and change directories to the project-root folder.
 5. In the command line interface, run the following code. `conda-forge` installations can take a long time to complete, so we recommend splitting up the installations into two sets, as shown below. The packages can all be installed at once but it may take a prohibitively long time. Either way, we recommend allowing the installations to run over night. See [https://github.com/nasa/VITALS/tree/main/setup](https://github.com/nasa/VITALS/tree/main/setup) for more information. 
 
@@ -72,33 +74,32 @@ conda install -c conda-forge --yes hvplot geoviews rioxarray rasterio geopandas 
 
 ### 2. Run the Tutorial Notebooks:
 
-If you'd like to complete the notebooks in VS Code, open the 01_tutorial_notebook.ipynb notebook in VS Code and complete it. Then open the 02_tutorial_notebook.ipynb in VS Code and complete it.
+If you'd like to complete the notebooks in VS Code, open the 01_NEON_EMIT_Download_Data.ipynb notebook in VS Code and complete it. Then, open the 02_NEON_EMIT_CWC.ipynb in VS Code and complete it.
 
-If you'd like to complete the notebooks in Jupyter Lab or Jupyter Notebooks, run the command `jupyter lab` or `jupyter notebook` in the command line interface once you have the environment activated. In a few seconds, Jupyter Lab or Jupyter Notebooks will open the project-root directory in your web browser. Now, you can open and complete 01_tutorial_notebook.ipynb and then open and complete 02_tutorial_notebook.ipynb.
+If you'd like to complete the notebooks in Jupyter Lab or Jupyter Notebooks, run the command `jupyter lab` or `jupyter notebook` in the command line interface once you have the environment activated. In a few seconds, Jupyter Lab or Jupyter Notebooks will open the project-root directory in your web browser. Now, you can open and complete 01_NEON_EMIT_Download_Data.ipynb and then open and complete 02_NEON_EMIT_CWC.ipynb.
 
 Instructions for how to download, save, and access the data for these tutorial notebooks are in the tutorial notebooks. The tutorial notebooks also contain further instructions to set up your project-root folder for success.
 
-## ORIGINAL Workflow Instructions - should we take this out??
-* **The end goal of these steps:** We want canopy water content (CWC) calculations for the burned and unburned tiles of interest at the NEON Soaproot Saddle field site (SOAP). For each tile, we want CWC calculated with EMIT and NEON data. This will allow us to compare CWC between burned and unburned areas AND between lower resolution (EMIT) and higher resolution (NEON) data to develop a tutorial for others interested in these two data sources.
-
-### Steps:
+### 2a. Tutorial Notebook Contents:
+* **The end goal of both tutorial notebooks:** We want canopy water content (CWC) calculations for the burned and unburned tiles of interest at the NEON Soaproot Saddle field site (SOAP). For each tile, we want CWC calculated with EMIT and NEON data. This will allow us to compare CWC between burned and unburned areas AND between lower resolution (EMIT) and higher resolution (NEON) data.
 
 <ol>
-  <li>Identify and download data:</li>
+  <li>01_NEON_EMIT_Download_Data.ipynb - Identify and download data:</li>
   <ol>
     <li>NEON</li>
     <ol>
-      <li>Identify burned and unburned tiles of interest from the NEON AOP data. Identify the latitude and longitude of those tiles.</li>
+      <li>Identify burned and unburned tiles of interest from the NEON AOP data. Identify the UTM coordinates of those tiles (in the tutorial notebook, these coordinates are provided for you).</li>
       <li>Download the NEON Spectrometer orthorectified surface bidirectional reflectance data for the burned and unburned tiles.</li>
+      <li>Process the NEON Spectrometer orthorectified surface bidirectional reflectance data for the burned and unburned tiles: convert the hdf5 datasets into xarray.Datasets, apply the scale factor, set bad bands to NaN, and export the xarray.Datasets to NetCDF files.</li>
     </ol>
     <li>EMIT</li>
     <ol>
-      <li>Identify EMIT L2A Estimated Surface Reflectance granule(s) that cover the burned and unburned tiles.</li>
-      <li>Download the EMIT L2A Estimated Surface Reflectance granule(s)</li>
-      <li>Clip/crop the downloaded EMIT L2A Estimated Surface Reflectance granule(s) to the burned and unburned tiles of interest. <em>NOTE: if more than one EMIT granule is needed to cover one of the tiles of interest, those EMIT granules would need to be merged together first.</em></li>
+      <li>Identify EMIT L2A Estimated Surface Reflectance granule(s) that cover the burned and unburned tiles (in the tutorial notebook, this granule is provided for you).</li>
+      <li>Download the EMIT L2A Estimated Surface Reflectance granule(s) and open as xarray.Dataset(s).</li>
+      <li>Clip/crop the downloaded EMIT L2A Estimated Surface Reflectance granule(s) to the burned and unburned tiles of interest and export the cropped xarray.Datasets to NetCDF files. <em>NOTE: if more than one EMIT granule is needed to cover one of the tiles of interest, those EMIT granules would need to be merged together first and then cropped and exported.</em></li>
     </ol>
   </ol>
-  <li>Calculate canopy water content (CWC) for the following combinations:</li>
+  <li>02_NEON_EMIT_CWC.ipynb - Calculate canopy water content (CWC) for the following combinations:</li>
   <table>
   <tr>
     <th>           </th>
@@ -117,7 +118,7 @@ Instructions for how to download, save, and access the data for these tutorial n
   </tr>
 </table>
 
-  <li>Compare the CWC calculations:</li>
+  <li>02_NEON_EMIT_CWC.ipynb - Compare the CWC calculations:</li>
   <ol>
     <li>CWC calculated by lower and higher resolution reflectance data:</li>
     <ol>
