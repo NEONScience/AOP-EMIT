@@ -1,6 +1,7 @@
 [![DOI](https://zenodo.org/badge/968394746.svg)](https://doi.org/10.5281/zenodo.15300127)
 
-# Seeing the Forest as well as the Trees: Confirming Forest Measurements from Space
+# Seeing the Forest as well as the Trees: Creating a Tutorial to Compare Data Collected From Air and Space
+
 
 ## Project Description:
 In this repository, Canopy Water Content (CWC)<sup>1</sup> is calculated with two different data products: Earth Surface Mineral Dust Source Investigation [[EMIT]](https://earth.jpl.nasa.gov/emit/data/data-products/)<sup>2</sup> L2A Surface Reflectance data and Spectrometer Orthorectified Surface Bidirectional Reflectance data from the NSF National Ecological Observatory Network (NEON) program<sup>3</sup>. This repository also evaluates trade-offs between higher resolution data [[NEON]](https://www.neonscience.org/about/faq) vs larger spatial scale data [EMIT].
