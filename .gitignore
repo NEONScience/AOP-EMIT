@@ -1,3 +1,7 @@
+# We chose a very restrictive gitignore setup that only allows certain files 
+# to avoid adding very large data files. This means that .DS.Store and Thumbs.db 
+# files will automatically be ignored.
+
 # Ignore everything
 *
 
