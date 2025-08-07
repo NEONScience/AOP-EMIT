@@ -22,6 +22,9 @@ Create an Earthdata Login account (if you don't already have one) at [https://ur
 * This file is needed to access NASA Earthdata assets from a scripting environment like Python.
 * There are multiple methods to create a .netrc file. The earthaccess package is used to automatically create a netrc file using your Earthdata login credentials if one does not exist. There are detailed instruction available for creating a .netrc file using other methods [here](https://github.com/nasa/LPDAAC-Data-Resources/blob/main/guides/create_netrc_file.md).
 
+3. A NEON API Token
+* Create a Token following [this tutorial](https://www.neonscience.org/resources/learning-hub/tutorials/neon-api-tokens-tutorial)
+
 | Dataset Name  | Short Description | Range, Resolution, and Area | Data Citation |
 |---------------|-------------------|-----------------------------|---------------|
 | [EMIT L2A Estimated Surface Reflectance and Uncertainty and Masks (EMITL2ARFL)](https://lpdaac.usgs.gov/products/emitl2arflv001/)    | Non-orthorectified surface reflectance derived by screening clouds and correction for atmospheric effects; data is in NetCDF4 files; data can be searched for and downloaded via the earthaccess python library         | August 09, 2022 - ongoing, 60 m spatial resolution, each granule is abt 75 km by 75 km, areas are sunlit regions of interest between 52° N latitude and 52° S latitude            | Green, R. (2022). <i>EMIT L2A Estimated Surface Reflectance and Uncertainty and Masks 60 m V001</i> [Data set]. NASA EOSDIS Land Processes Distributed Active Archive Center. Accessed 2025-06-15 from https://doi.org/10.5067/EMIT/EMITL2ARFL.001                     |
