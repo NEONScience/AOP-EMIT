@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/968394746.svg)](https://doi.org/10.5281/zenodo.15300127)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16761643.svg)](https://doi.org/10.5281/zenodo.16761643)
 
 # Seeing the Forest as well as the Trees: Creating a Tutorial to Compare Data Collected From Air and Space
 
