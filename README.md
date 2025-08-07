@@ -6,7 +6,7 @@
 ## Project Description:
 In this repository, Canopy Water Content (CWC)<sup>1</sup> is calculated with two different data products: Earth Surface Mineral Dust Source Investigation [[EMIT]](https://www.earthdata.nasa.gov/data/catalog/lpcloud-emitl2arfl-001) L2A Surface Reflectance data<sup>2</sup> and Spectrometer Orthorectified Surface Bidirectional Reflectance data from the NSF National Ecological Observatory Network (NEON) program<sup>3</sup>. This repository also evaluates trade-offs between higher resolution data [[NEON]](https://www.neonscience.org/about/faq) vs larger spatial scale data [EMIT].
 
-Each branch of this repository besides the main one - neffr, hrieder, and bhass - contains a folder of exploratory notebooks that were completed by Randi Neff (rn), Hannah Rieder (hr), and Bridget Hass (bh) to learn about NEON and EMIT data and CWC. The main branch of this repository contains a folder of final notebooks that includes two tutorial notebooks born out of the exploratory notebooks. Others can use these tutorial notebooks to download and process NEON and EMIT reflectance data (01_NEON_EMIT_tutorial_notebook.ipynb) and then calculate and compare CWC using the NEON and EMIT reflectance data (02_NEON_EMIT_tutorial_notebook.ipynb). A tutorial does not currently exist that compares NEON and EMIT reflectance data via CWC. More information about **<a href="#workflow-instructions">Workflow Instructions</a>**, **<a href="#tutorial-notebook-contents">Tutorial Notebook Contents</a>**, and **<a href="#repository-structure">Repository Structure</a>** can be found below.
+Each branch of this repository besides the main one - neffr, hrieder, and bhass - contains a folder of exploratory notebooks that were completed by Randi Neff (rn), Hannah Rieder (hr), and Bridget Hass (bh) to learn about NEON and EMIT data and CWC. The main branch of this repository contains a folder of final notebooks that includes two tutorial notebooks born out of the exploratory notebooks. Others can use these tutorial notebooks to download and process NEON and EMIT reflectance data (01_NEON_EMIT_tutorial_notebook.ipynb) and then calculate and compare CWC using the NEON and EMIT reflectance data (02_NEON_EMIT_tutorial_notebook.ipynb). A tutorial does not currently exist that compares NEON and EMIT reflectance data via CWC. More information about **<a href="#workflow-instructions">Workflow Instructions</a>**, **<a href="#tutorial-notebook-contents">Tutorial Notebook Contents</a>**, and **<a href="#repository-structure">Repository Structure (main branch)</a>** can be found below.
 
 #### Background:
 EMIT measures surface reflectance from the International Space Station (ISS) at 60 meter resolution<sup>2</sup>. NEON operates an Airborne Observation Platform (AOP), which is a set of instruments on a light aircraft that collect high resolution remote sensing data at a low altitude [(see NEON Airborne Remote Sensing webpage)](https://www.neonscience.org/data-collection/airborne-remote-sensing). One of the datasets AOP collects is surface reflectance at 1 meter resolution. 
@@ -153,50 +153,30 @@ Please note that the tutorial notebooks include further information:
   </ol>
 </ol>
       
-## <span id="repository-structure">Repository Structure</span>:
+## <span id="repository-structure">Repository Structure (main branch)</span>:
 
 ```
 project-root/
 │
-├── notebooks/                # Main folder for notebooks
-│   ├── exploratory/          # Subfolder for exploratory analysis
-│   │   ├── hr/               # Subfolder for Hannah Rieder's notebooks
-│   │   │   ├── 01_hr_find_download_data.ipynb
-│   │   │   └── 02_hr_visualize_data.ipynb
-│   │   ├── rn/               # Subfolder for Randi Neff's notebooks
-│   │   │   ├── 01_rn_find_download_data.ipynb
-│   │   │   ├── 02_rn_explore_aop_data.ipynb
-│   │   │   └── 03_rn_explore_emit_data.ipynb
-│   │   ├── bh/               # Subfolder for Bridget Hass's notebooks
-│   │   │   ├── 01_bh_find_download_data.ipynb
-│   │
-│   ├── final/                # Subfolder for finalized notebooks
-│   │   ├── modules
-│   │   │   ├── .ipynb_checkpoints
-│   │   │   ├── __pycache__
-│   │   │   ├── __init__
-│   │   │   ├── ewt_tools.py
-│   │   │   ├── ewt_calc2.py
-│   |   |   └── test_functions.py
-│   │   ├── 01_NEON_EMIT_tutorial_notebook.ipynb
-│   │   └── 02_NEON_EMIT_tutorial_notebook.ipynb
-│
-├── scripts/                  # Python scripts for processing and analysis
-│   ├── preprocess.py
-│   └── analysis.py
-│
-├── data/                     # Data folder (ignored by Git)
-│   ├── raw/                  # Raw data (input files)
-│   ├── processed/            # Processed data (intermediate files)
-│   └── output/               # Final output files
-│
-├── results/                  # Results (e.g., plots, reports, etc.)
-│   ├── figures/
-│   └── summary.md
-│
-├── .gitignore                # Git ignore file
-├── README.md                 # Project overview and instructions
-└── requirements.txt          # Python dependencies
+├── data/                                                  # Subfolder for burned and unburned tile boundary shapefiles
+|   ├── NEON_D17_SOAP_DPQA_298000_4100000_boundary.dbf
+|   ├── NEON_D17_SOAP_DPQA_298000_4100000_boundary.prj
+|   ├── NEON_D17_SOAP_DPQA_298000_4100000_boundary.shp
+|   ├── NEON_D17_SOAP_DPQA_298000_4100000_boundary.shx
+|   ├── NEON_D17_SOAP_DPQA_298000_4101000_boundary.dbf
+|   ├── NEON_D17_SOAP_DPQA_298000_4101000_boundary.prj
+|   ├── NEON_D17_SOAP_DPQA_298000_4101000_boundary.shp
+|   └── NEON_D17_SOAP_DPQA_298000_4101000_boundary.shx
+├── notebooks/                                             # Main folder for notebooks
+│   ├── modules/                                           # Subfolder for .py files
+│   │   ├── emit_tools.py               
+│   │   ├── ewt_calc2.py
+│   │   └── test_functions.py
+│   ├── 01_NEON_EMIT_tutorial_notebook.ipynb               # Tutorial notebook 01
+│   ├── 02_NEON_EMIT_tutorial_notebook.ipynb               # Tutorial notebook 02
+├── .gitignore                                             # Git ignore file
+├── README.md                                              # Project overview and instructions
+└── lpdaac_vitals_environment.yml                          # Environment file
 ```
 
 ## Sources:
