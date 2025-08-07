@@ -4,23 +4,26 @@
 
 
 ## Project Description:
-In this repository, Canopy Water Content (CWC)<sup>1</sup> is calculated with two different data products: Earth Surface Mineral Dust Source Investigation [[EMIT]](https://earth.jpl.nasa.gov/emit/data/data-products/)<sup>2</sup> L2A Surface Reflectance data and Spectrometer Orthorectified Surface Bidirectional Reflectance data from the NSF National Ecological Observatory Network (NEON) program<sup>3</sup>. This repository also evaluates trade-offs between higher resolution data [[NEON]](https://www.neonscience.org/about/faq) vs larger spatial scale data [EMIT].
+In this repository, Canopy Water Content (CWC)<sup>1</sup> is calculated with two different data products: Earth Surface Mineral Dust Source Investigation [[EMIT]](https://www.earthdata.nasa.gov/data/catalog/lpcloud-emitl2arfl-001) L2A Surface Reflectance data<sup>2</sup> and Spectrometer Orthorectified Surface Bidirectional Reflectance data from the NSF National Ecological Observatory Network (NEON) program<sup>3</sup>. This repository also evaluates trade-offs between higher resolution data [[NEON]](https://www.neonscience.org/about/faq) vs larger spatial scale data [EMIT].
 
-This repository contains a folder of exploratory notebooks that were completed by Randi Neff (rn), Hannah Rieder (hr), and Bridget Hass (bh) to learn about NEON and EMIT data and CWC. This repository also contains a folder of final notebooks that includes two tutorial notebooks born out of the exploratory notebooks. Others can use these tutorial notebooks to download and process NEON and EMIT reflectance data (01_NEON_EMIT_Download_Data.ipynb) and then calculate and compare CWC using the NEON and EMIT reflectance data (02_NEON_EMIT_CWC.ipynb). A tutorial does not currently exist that compares NEON and EMIT reflectance data via CWC. More information about **<a href="#workflow-instructions">Workflow Instructions</a>**, **<a href="#tutorial-notebook-contents">Tutorial Notebook Contents</a>**, and **<a href="#repository-structure">Repository Structure</a>** can be found below.
+This repository contains a folder of exploratory notebooks that were completed by Randi Neff (rn), Hannah Rieder (hr), and Bridget Hass (bh) to learn about NEON and EMIT data and CWC. This repository also contains a folder of final notebooks that includes two tutorial notebooks born out of the exploratory notebooks. Others can use these tutorial notebooks to download and process NEON and EMIT reflectance data (01_NEON_EMIT_tutorial_notebook.ipynb) and then calculate and compare CWC using the NEON and EMIT reflectance data (02_NEON_EMIT_tutorial_notebook.ipynb). A tutorial does not currently exist that compares NEON and EMIT reflectance data via CWC. More information about **<a href="#workflow-instructions">Workflow Instructions</a>**, **<a href="#tutorial-notebook-contents">Tutorial Notebook Contents</a>**, and **<a href="#repository-structure">Repository Structure</a>** can be found below.
 
 #### Background:
-EMIT measures surface reflectance from the International Space Station (ISS) at 60 meter resolution [(Green, 2023)](https://lpdaac.usgs.gov/products/emitl2bminv001/). NEON operates an Airborne Observation Platform (AOP), which is a set of instruments on a light aircraft that collect high resolution remote sensing data at a low altitude [(see NEON Airborne Remote Sensing webpage)](https://www.neonscience.org/data-collection/airborne-remote-sensing). One of the datasets AOP collects is surface reflectance at 1 meter resolution. 
+EMIT measures surface reflectance from the International Space Station (ISS) at 60 meter resolution<sup>2</sup>. NEON operates an Airborne Observation Platform (AOP), which is a set of instruments on a light aircraft that collect high resolution remote sensing data at a low altitude [(see NEON Airborne Remote Sensing webpage)](https://www.neonscience.org/data-collection/airborne-remote-sensing). One of the datasets AOP collects is surface reflectance at 1 meter resolution. 
 
-The area of interest is the NEON Soaproot Saddle Site [(SOAP)](https://www.neonscience.org/field-sites/soap) in the Sierra National Forest in California which contains a mixed conifer forest and was partially burned by the [Creek fire](https://www.fire.ca.gov/incidents/2020/9/4/creek-fire) in 2020. Within the SOAP site, two 1 km by 1 km tiles are focused on: one that was burned by the Creek fire and one that was unburned. Areas that burned and those that remained unburned will potentially show the impact of mortality using high resolution NEON data, which is crucial for understanding post-fire recovery, carbon dynamics and forest hydrology. Canopy Water Content (CWC) is an indicator of tree health and measures the total amount of liquid water in canopy leaves. <sup>5</sup> Measurements of CWC vary based on tree species and can be used to predict mortality. <sup>6</sup> In addition, using EMIT data at a larger scale can show broad patterns of vegetation stress. Ultimately, we will be using the work in this repository to create a tutorial for combining both datasets for a more robust analysis of surface reflectance and forest health.
+The area of interest is the NEON Soaproot Saddle Site [(SOAP)](https://www.neonscience.org/field-sites/soap) in the Sierra National Forest in California which contains a mixed conifer forest and was partially burned by the [Creek fire](https://www.fire.ca.gov/incidents/2020/9/4/creek-fire) in 2020. Within the SOAP site, two 1 km by 1 km tiles are focused on: one that was burned by the Creek fire and one that was unburned. Areas that burned and those that remained unburned will potentially show the impact of mortality using high resolution NEON data, which is crucial for understanding post-fire recovery, carbon dynamics and forest hydrology. Canopy Water Content (CWC) is an indicator of tree health and measures the total amount of liquid water in canopy leaves<sup>4</sup>. Measurements of CWC vary based on tree species and can be used to predict mortality. <sup>5</sup> In addition, using EMIT data at a larger scale can show broad patterns of vegetation stress. Ultimately, we will be using the work in this repository to create a tutorial for combining both datasets for a more robust analysis of surface reflectance and forest health.
 
 ## Datasets and Requirements:
 The following are required. All software or accounts are free. Data can be downloaded via scripts.
 1. Earthdata Login account
-Create an Earthdata Login account (if you don't already have one) at [https://urs.earthdata.nasa.gov/users/new](https://urs.earthdata.nasa.gov/users/new)
+* Create an Earthdata Login account (if you don't already have one) at [https://urs.earthdata.nasa.gov/users/new](https://urs.earthdata.nasa.gov/users/new)
 
 2. Netrc file
 * This file is needed to access NASA Earthdata assets from a scripting environment like Python.
 * There are multiple methods to create a .netrc file. The earthaccess package is used to automatically create a netrc file using your Earthdata login credentials if one does not exist. There are detailed instruction available for creating a .netrc file using other methods [here](https://github.com/nasa/LPDAAC-Data-Resources/blob/main/guides/create_netrc_file.md).
+
+3. A NEON API Token
+* Create a Token following [this tutorial](https://www.neonscience.org/resources/learning-hub/tutorials/neon-api-tokens-tutorial)
 
 | Dataset Name  | Short Description | Range, Resolution, and Area | Data Citation |
 |---------------|-------------------|-----------------------------|---------------|
@@ -43,7 +46,7 @@ The code for this project will be completed in Jupyter Notebooks in the Python p
 
 1. If not already installed, install [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) on your local computer.
 2. Download the lpdaac_vitals_environment.yml file to your computer and save it in the desired folder for this project (we'll refer to this as the project-root folder).
-3. In the project-root folder, create a new folder called "notebooks" (project-root/notebooks/). In this GitHub repo, navigate to the notebooks/final/ folder and download the 01_NEON_EMIT_Download_Data.ipynb and 02_NEON_EMIT_CWC.ipynb files and save them to the project-root/notebooks/ folder on your computer.
+3. In the project-root folder, create a new folder called "notebooks" (project-root/notebooks/). In this GitHub repo, navigate to the notebooks/final/ folder and download the 01_NEON_EMIT_tutorial_notebook.ipynb and 02_NEON_EMIT_tutorial_notebook.ipynb files and save them to the project-root/notebooks/ folder on your computer.
 4. Open the Command Prompt and use the `cd` command to change directories to the project-root folder.
 5. In the Command Prompt, run the following code. Creating the environment may take about 10 minutes.
 
@@ -58,7 +61,7 @@ conda activate lpdaac_vitals
 **Option 2 - Non-Windows Operating System:** Create lpdaac_vitals environment from scratch:
 1. If not already installed, install [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) on your local computer.
 2. In your file explorer, create a folder to be the project directory for this project (we'll refer to this as the project-root folder).
-3. In the project-root folder, create a new folder called "notebooks" (project-root/notebooks/). In this GitHub repo, navigate to the notebooks/final/ folder and download the 01_NEON_EMIT_Download_Data.ipynb and 02_NEON_EMIT_CWC.ipynb files and save them to the project-root/notebooks/ folder on your computer.
+3. In the project-root folder, create a new folder called "notebooks" (project-root/notebooks/). In this GitHub repo, navigate to the notebooks/final/ folder and download the 01_NEON_EMIT_tutorial_notebook.ipynb and 02_NEON_EMIT_tutorial_notebook.ipynb files and save them to the project-root/notebooks/ folder on your computer.
 4. Open your preferred command line interface and change directories to the project-root folder.
 5. In the command line interface, run the following code. `conda-forge` installations can take a long time to complete, so we recommend splitting up the installations into two sets, as shown below. The packages can all be installed at once but it may take a prohibitively long time. Either way, we recommend allowing the installations to run over night. See [https://github.com/nasa/VITALS/tree/main/setup](https://github.com/nasa/VITALS/tree/main/setup) for more information. 
 
@@ -76,9 +79,9 @@ conda install -c conda-forge --yes hvplot geoviews rioxarray rasterio geopandas 
 
 ### 2. Run the Tutorial Notebooks:
 
-If you'd like to complete the notebooks in VS Code, open the 01_NEON_EMIT_Download_Data.ipynb notebook in VS Code and complete it. Then, open the 02_NEON_EMIT_CWC.ipynb in VS Code and complete it.
+If you'd like to complete the notebooks in VS Code, open the 01_NEON_EMIT_tutorial_notebook.ipynb notebook in VS Code and complete it. Then, open the 02_NEON_EMIT_tutorial_notebook.ipynb in VS Code and complete it.
 
-If you'd like to complete the notebooks in Jupyter Lab or Jupyter Notebooks, run the command `jupyter lab` or `jupyter notebook` in the command line interface once you have the environment activated. In a few seconds, Jupyter Lab or Jupyter Notebooks will open the project-root directory in your web browser. Now, you can open and complete 01_NEON_EMIT_Download_Data.ipynb and then open and complete 02_NEON_EMIT_CWC.ipynb.
+If you'd like to complete the notebooks in Jupyter Lab or Jupyter Notebooks, run the command `jupyter lab` or `jupyter notebook` in the command line interface once you have the environment activated. In a few seconds, Jupyter Lab or Jupyter Notebooks will open the project-root directory in your web browser. Now, you can open and complete 01_NEON_EMIT_tutorial_notebook.ipynb and then open and complete 02_NEON_EMIT_tutorial_notebook.ipynb.
 
 Please note that the tutorial notebooks include further information:
 * Instructions for how to download, save, and access the data for these tutorial notebooks
@@ -89,7 +92,7 @@ Please note that the tutorial notebooks include further information:
 * **The end goal of both tutorial notebooks:** We want canopy water content (CWC) calculations for the burned and unburned tiles of interest at the NEON Soaproot Saddle field site (SOAP). For each tile, we want CWC calculated with EMIT and NEON data. This will allow us to compare CWC between burned and unburned areas AND between lower resolution (EMIT) and higher resolution (NEON) data.
 
 <ol>
-  <li>01_NEON_EMIT_Download_Data.ipynb - Identify and download data:</li>
+  <li>01_NEON_EMIT_tutorial_notebook.ipynb - Identify and download data:</li>
   <ol>
     <li>NEON</li>
     <ol>
@@ -104,7 +107,7 @@ Please note that the tutorial notebooks include further information:
       <li>Clip/crop the downloaded EMIT L2A Estimated Surface Reflectance granule(s) to the burned and unburned tiles of interest and export the cropped xarray.Datasets to NetCDF files. <em>NOTE: if more than one EMIT granule is needed to cover one of the tiles of interest, those EMIT granules would need to be merged together first and then cropped and exported.</em></li>
     </ol>
   </ol>
-  <li>02_NEON_EMIT_CWC.ipynb - Calculate canopy water content (CWC) for the following combinations:</li>
+  <li>02_NEON_EMIT_tutorial_notebook.ipynb - Calculate canopy water content (CWC) for the following combinations:</li>
   <table>
   <tr>
     <th>           </th>
@@ -123,7 +126,7 @@ Please note that the tutorial notebooks include further information:
   </tr>
 </table>
 
-  <li>02_NEON_EMIT_CWC.ipynb - Compare the CWC calculations:</li>
+  <li>02_NEON_EMIT_tutorial_notebook.ipynb - Compare the CWC calculations:</li>
   <ol>
     <li>CWC calculated by lower and higher resolution reflectance data:</li>
     <ol>
@@ -172,8 +175,8 @@ project-root/
 │   │   │   ├── ewt_tools.py
 │   │   │   ├── ewt_calc2.py
 │   |   |   └── test_functions.py
-│   │   ├── 01_NEON_EMIT_Download_Data.ipynb
-│   │   └── 02_NEON_EMIT_CWC.ipynb
+│   │   ├── 01_NEON_EMIT_tutorial_notebook.ipynb
+│   │   └── 02_NEON_EMIT_tutorial_notebook.ipynb
 │
 ├── scripts/                  # Python scripts for processing and analysis
 │   ├── preprocess.py
@@ -195,13 +198,13 @@ project-root/
 
 ## Sources:
 
+*The list of sources below include some software citations, such as the neonutilities package<sup>6</sup>, as well as references for CWC, NEON, and EMIT information.*
+
 1. Land Processes Distributed Active Archive Center (LP DAAC). Equivalent Water Thickness/Canopy Water Content from Imaging Spectroscopy Data https://nasa.github.io/VITALS/python/03_EMIT_CWC_from_Reflectance.html
 2. Green, R. (2022). EMIT L2A Estimated Surface Reflectance and Uncertainty and Masks 60 m V001 [Data set]. NASA EOSDIS Land Processes Distributed Active Archive Center. Accessed 2025-06-15 from https://doi.org/10.5067/EMIT/EMITL2ARFL.001
 3. NEON (National Ecological Observatory Network). Spectrometer orthorectified surface directional reflectance - mosaic (DP3.30006.001), RELEASE-2025.Dataset accessed from https://data.neonscience.org/data-products/DP3.30006.001/RELEASE-2025 on June 13, 2025.
-4. Claire Lunch, Bridget Hass, Zachary Nickerson and NEON (National Ecological Observatory Network) (2025). neonutilities: Utilities for Working with NEON Data. Python package version 1.1.0. https://doi.org/10.5281/zenodo.15530180
-5. Asner, G. P., Brodrick, P. G., Anderson, C. B., Vaughn, N., Knapp, D. E., & Martin, R. E. (2015). Progressive forest canopy water loss during the 2012–2015 California drought. PNAS, 113(2). https://doi.org/https://doi.org/10.1073/pnas.152339711
-6. Brodrick, P., & Asner, G. (2017). Remotely sensed predictors of conifer tree mortalityduring severe drought. Environmental Research Letters, 12. DOI: 10.1088/1748-9326/aa8f55
-
-*The list of sources above includes some software citations, such as the neonutilities package, as well as references for CWC, NEON, and EMIT information.*
+4. Asner, G. P., Brodrick, P. G., Anderson, C. B., Vaughn, N., Knapp, D. E., & Martin, R. E. (2015). Progressive forest canopy water loss during the 2012–2015 California drought. PNAS, 113(2). https://doi.org/https://doi.org/10.1073/pnas.152339711
+5. Brodrick, P., & Asner, G. (2017). Remotely sensed predictors of conifer tree mortalityduring severe drought. Environmental Research Letters, 12. DOI: 10.1088/1748-9326/aa8f55
+6. Claire Lunch, Bridget Hass, Zachary Nickerson and NEON (National Ecological Observatory Network) (2025). neonutilities: Utilities for Working with NEON Data. Python package version 1.1.0. https://doi.org/10.5281/zenodo.15530180
 
 
