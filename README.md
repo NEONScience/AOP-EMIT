@@ -16,7 +16,7 @@ The area of interest is the NEON Soaproot Saddle Site [(SOAP)](https://www.neons
 ## Datasets and Requirements:
 The following are required. All software or accounts are free. Data can be downloaded via scripts.
 1. Earthdata Login account
-Create an Earthdata Login account (if you don't already have one) at [https://urs.earthdata.nasa.gov/users/new](https://urs.earthdata.nasa.gov/users/new)
+* Create an Earthdata Login account (if you don't already have one) at [https://urs.earthdata.nasa.gov/users/new](https://urs.earthdata.nasa.gov/users/new)
 
 2. Netrc file
 * This file is needed to access NASA Earthdata assets from a scripting environment like Python.
